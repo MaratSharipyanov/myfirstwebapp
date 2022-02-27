@@ -25,4 +25,15 @@
         <servlet-name>list</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
+
+    <!-- delete servlet -->
+    <servlet>
+        <servlet-name>del</servlet-name>
+        <servlet-class>app.servlets.DelServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>del</servlet-name>
+        <url-pattern>/del</url-pattern>
+    </servlet-mapping>
 </web-app>

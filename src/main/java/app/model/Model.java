@@ -24,6 +24,14 @@ public class Model {
         model.add(user);
     }
 
+    public void del(User user) {
+        model.remove(user);
+    }
+
+    public void delAll() {
+        model = new ArrayList<>();
+    }
+
     public List<String> list() {
         return model.stream().map(User::getName).collect(Collectors.toList());
     }
