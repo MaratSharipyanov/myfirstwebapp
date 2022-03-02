@@ -13,7 +13,7 @@ import java.io.IOException;
 public class DelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/del.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/del.jsp");
         requestDispatcher.forward(req, resp);
     }
 
