@@ -36,4 +36,15 @@
         <servlet-name>del</servlet-name>
         <url-pattern>/del</url-pattern>
     </servlet-mapping>
+
+    <!-- delete all users servlet -->
+    <servlet>
+        <servlet-name>delAllServlet</servlet-name>
+        <servlet-class>app.servlets.DelAllServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>delAllServlet</servlet-name>
+        <url-pattern>/delall</url-pattern>
+    </servlet-mapping>
 </web-app>

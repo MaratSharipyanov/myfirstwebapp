@@ -1,6 +1,5 @@
 package app.servlets;
 
-import app.entities.User;
 import app.model.Model;
 
 import javax.servlet.RequestDispatcher;
@@ -9,28 +8,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-public class AddServlet extends HttpServlet {
+public class DelAllServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/delall.jsp");
         requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String password = req.getParameter("pass");
-        if (name.trim().equals("")) {
-            name = "Empty";
-        } else {
-            User user = new User(name, password);
+        String answer = req.getParameter("answer");
+        String result = "";
+        if (answer.equals("y") || answer.equals("yes")) {
+            result = "OK";
             Model model = Model.getInstance();
-            model.add(user);
+            model.delAll();
+        }else if (answer.equals("n") || answer.equals("no") || answer.equals("not")) {
+            result = "NOK";
         }
 
-        req.setAttribute("userName", name);
+        req.setAttribute("userDelAllNames", result);
         doGet(req, resp);
     }
 }

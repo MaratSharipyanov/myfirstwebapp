@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class DelServlet extends HttpServlet {
     @Override
@@ -21,9 +22,18 @@ public class DelServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("pass");
-        User user = new User(name, password);
-        Model model = Model.getInstance();
-        model.del(user);
+        if (name.trim().equals("")) {
+            name = "Empty";
+        } else {
+            Model model = Model.getInstance();
+            List<String> names = model.list();
+            for (String s: names) {
+                if (s.equals(name)){
+                    User user = new User(name, password);
+                    model.del(user);
+                }
+            }
+        }
 
         req.setAttribute("userDelName", name);
         doGet(req, resp);
